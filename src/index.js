@@ -4,25 +4,30 @@
  */
 
 module.exports = function getLoveTrianglesCount(preferences = []) {
-   Love=0;
-   num2 = 0;
-   num3 = 0;
-   for (var i = 0; i < preferences.length; i++) {
-    sp1 = preferences[i];
-    num1 = i;
-      for (var j = 0; j < preferences.length; j++) {
-        if (preferences[j] == sp1 + 1) {
-          sp2 = preferences[j];
-          num2 = j+1; 
-        } else if (preferences[j] == sp1 - 1) {
-          sp3 = preferences[j];
-          num3 = j+1;
-        };
-      };
-    if (num1 < num2) {
-      if (num3 > num2) {
+  lov = preferences.length;
+  Love = 0;
+  el1 = 0;
+  el2 = 0;
+  el3 = 0;
+  for (i=0; i < lov; i++) {
+    ind1 = preferences[i]; //2
+    ind2 = i + 1; //1
+    ind3 = preferences[ind1 - 1]; //3
+    ind4 = preferences[ind3 - 1];  // 1
+    if (i == 0) {
+        if (ind4 === ind2 && ind1 !== ind2) {
         Love++;
-      };
+        el1 = ind1 - 1;
+        el2 = ind3 - 1;
+        el3 = ind4 - 1;
+        };
+    } else if (i !== el1 && i !== el2 && i !== el3) {
+        if (ind4 === ind2 && ind1 !== ind2) {
+            Love++;
+            el1 = ind1 - 1;
+            el2 = ind3 - 1;
+            el3 = ind4 - 1;
+        };
     };
 };
  return Love;
