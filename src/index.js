@@ -20,6 +20,9 @@ module.exports = function getLoveTrianglesCount(preferences = []) {
         el1 = ind1 - 1;
         el2 = ind3 - 1;
         el3 = ind4 - 1;
+        delete preferences[el1];
+        delete preferences[el2];
+        delete preferences[el3];
         };
     } else if (i !== el1 && i !== el2 && i !== el3) {
         if (ind4 === ind2 && ind1 !== ind2) {
@@ -27,6 +30,9 @@ module.exports = function getLoveTrianglesCount(preferences = []) {
             el1 = ind1 - 1;
             el2 = ind3 - 1;
             el3 = ind4 - 1;
+            delete preferences[el1];
+            delete preferences[el2];
+            delete preferences[el3];
         };
     };
 };
